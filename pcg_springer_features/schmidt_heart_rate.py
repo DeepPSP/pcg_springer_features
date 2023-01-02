@@ -21,12 +21,12 @@ def get_schmidt_heart_rate(
 ) -> Tuple[float, float]:
     """
 
-    compute heart rate from (ECG) signal using Schmidt algorithm (using autocorrelation)
+    compute heart rate from (PCG) signal using Schmidt algorithm (using autocorrelation)
 
     Parameters
     ----------
     signal : np.ndarray,
-        the (ECG) signal
+        the (PCG) signal
     fs : int,
         the sampling frequency
     config : dict, optional,

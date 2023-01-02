@@ -18,13 +18,12 @@ def get_dwt_features(
     signal: np.ndarray, fs: int, config: Optional[dict] = None
 ) -> np.ndarray:
     """
-
     compute the discrete wavelet transform (DWT) features using Springer's algorithm
 
     Parameters
     ----------
     signal : np.ndarray,
-        the (ECG) signal, of shape (nsamples,)
+        the (PCG) signal, of shape (nsamples,)
     fs : int,
         the sampling frequency
     config : dict, optional,
@@ -64,7 +63,7 @@ def get_full_dwt_features(
     Parameters
     ----------
     signal : np.ndarray,
-        the (ECG) signal, of shape (nsamples,)
+        the (PCG) signal, of shape (nsamples,)
     fs : int,
         the sampling frequency
     config : dict, optional,
