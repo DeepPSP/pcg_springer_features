@@ -57,7 +57,6 @@ def get_full_dwt_features(
     signal: np.ndarray, fs: int, config: Optional[dict] = None
 ) -> np.ndarray:
     """
-
     compute the full DWT features using Springer's algorithm
 
     Parameters
@@ -97,8 +96,27 @@ def get_full_dwt_features(
 
 def _wkeep1(x: np.ndarray, k: int, opt: Union[str, int] = "c") -> np.ndarray:
     """
-
     modified from the matlab function ``wkeep1``
+
+    Parameters
+    ----------
+    x : np.ndarray,
+        the input array
+    k : int,
+        the length of the output array
+    opt : str or int, optional,
+        specifies the position of the output array in the input array,
+        if ``opt`` is an integer, then it is the first index of the output array,
+        if ``opt`` is a string, then it can be one of the following:
+        - ``"c"`` or ``"center"`` or ``"centre"``: the output array is centered in the input array
+        - ``"l"`` or ``"left"``: the output array is left-aligned in the input array
+        - ``"r"`` or ``"right"``: the output array is right-aligned in the input array
+
+    Returns
+    -------
+    y : np.ndarray,
+        the output array, of shape (k,),
+        if ``k > len(x)``, then ``x`` is returned directly
 
     References
     ----------
@@ -118,5 +136,5 @@ def _wkeep1(x: np.ndarray, k: int, opt: Union[str, int] = "c") -> np.ndarray:
         first = x_len - k
     else:
         raise ValueError(f"Unknown option: {opt}")
-    assert 0 <= first <= x_len - k
+    assert 0 <= first <= x_len - k, f"Invalid first index: {first}"
     return x[first : first + k]

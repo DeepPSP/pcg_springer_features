@@ -26,7 +26,6 @@ def get_springer_features(
     config: Optional[dict] = None,
 ) -> np.ndarray:
     """
-
     This function **almost** re-implements the original matlab
     implementation of the Springer features.
 
@@ -129,7 +128,6 @@ def get_springer_features(
 
 def hilbert_envelope(signal: np.ndarray, fs: int) -> np.ndarray:
     """
-
     Compute the envelope of the signal using the Hilbert transform.
 
     Parameters
@@ -152,7 +150,6 @@ def homomorphic_envelope_with_hilbert(
     signal: np.ndarray, fs: int, lpf_freq: int = 8, order: int = 1
 ) -> np.ndarray:
     """
-
     Compute the homomorphic envelope of the signal using the Hilbert transform.
 
     Parameters
@@ -189,7 +186,6 @@ def get_PSD_feature(
     overlap_size: float = 1 / 80,
 ) -> np.ndarray:
     """
-
     Compute the PSD (power spectral density) of the signal.
 
     Parameters
