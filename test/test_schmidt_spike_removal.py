@@ -29,12 +29,14 @@ def test_schmidt_spike_removal():
     """ """
     fs, data = siw.read(Path(__file__).parents[1] / "sample_data" / "13918_AV.wav")
     data = _to_dtype(data, np.float32)
+    window_size = 0.5
 
-    for spikes_density in [0.3, 0.01, 0.001]:
+    for spikes_density in [0.3, 0.01, 0.001, 0.0001]:
         original_signal = data.copy()
+        # put spikes in the first frame
         spikes_pos = np.random.choice(
-            original_signal.shape[0],
-            int(original_signal.shape[0] * spikes_density),
+            int(fs * window_size),
+            int(fs * window_size * spikes_density),
             replace=False,
         )
         original_signal[spikes_pos] = 10 * np.max(np.abs(original_signal))
