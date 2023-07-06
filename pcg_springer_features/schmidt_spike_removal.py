@@ -16,26 +16,30 @@ def schmidt_spike_removal(
     threshold: float = 3.0,
     eps: float = 1e-4,
 ) -> np.ndarray:
-    """
-    spike removal using Schmidt algorithm
+    """Spike removal using Schmidt algorithm [1]_.
 
     Parameters
     ----------
-    original_signal : np.ndarray,
-        the original signal
-    fs : int,
-        the sampling frequency
-    window_size : float, default 0.5,
-        the sliding window size, with units in seconds
-    threshold : float, default 3.0,
-        the threshold (multiplier for the median value) for detecting spikes
-    eps : float, default 1e-4,
-        the epsilon for numerical stability
+    original_signal : numpy.ndarray
+        The original signal.
+    fs : int
+        Sampling frequency of the signal.
+    window_size : float, default 0.5
+        Sliding window size, with units in seconds.
+    threshold : float, default 3.0
+        Threshold (multiplier for the median value) for detecting spikes.
+    eps : float, default 1e-4
+        Epsilon for numerical stability.
 
     Returns
     -------
-    despiked_signal : np.ndarray,
-        the despiked signal
+    despiked_signal : numpy.ndarray
+        Despiked signal.
+
+    References
+    ----------
+    .. [1] Schmidt, Samuel E., et al. "Segmentation of heart sound recordings by a duration-dependent hidden Markov model."
+           Physiological measurement 31.4 (2010): 513.
 
     """
     window_size = round(fs * window_size)

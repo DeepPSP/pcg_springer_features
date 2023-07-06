@@ -25,37 +25,44 @@ def get_springer_features(
     feature_format: str = "flat",
     config: Optional[dict] = None,
 ) -> np.ndarray:
-    """
-    This function **almost** re-implements the original matlab
-    implementation of the Springer features.
+    """This function **almost** re-implements the original matlab
+    implementation of the Springer features [1]_ [2]_.
 
     Parameters
     ----------
-    signal: np.ndarray,
+    signal : numpy.ndarray
         The signal (1D) to extract features from.
-    fs: int,
-        The sampling frequency of the signal.
-    feature_fs: int,
-        The sampling frequency of the features.
-    feature_format: str, default "flat",
-        The format of the features, can be one of
-        "flat", "channel_first", "channel_last",
-        case insensitive.
-    config: dict, optional,
+    fs : int
+        Sampling frequency of the signal.
+    feature_fs : int
+        Sampling frequency of the features.
+    feature_format : {"flat", "channel_first", "channel_last"}
+        The format of the features, case insensitive.
+        By default, "flat".
+    config : dict, optional
         The configuration for extraction methods of the features.
 
     Returns
     -------
-    springer_features: np.ndarray,
+    springer_features : numpy.ndarray
         The extracted features, of shape
-        (4 * feature_len,) if `feature_format` is "flat",
-        (4, feature_len) if `feature_format` is "channel_first",
-        (feature_len, 4) if `feature_format` is "channel_last".
+
+        - ``(4 * feature_len,)`` if `feature_format` is ``"flat"``,
+        - ``(4, feature_len)`` if `feature_format` is ``"channel_first"``,
+        - ``(feature_len, 4)`` if `feature_format` is ``"channel_last"``.
+
         The features are in the following order:
+
         - homomorphic_envelope
         - hilbert envelope
         - PSD
         - DWT
+
+    References
+    ----------
+    .. [1] Springer, David B., Lionel Tarassenko, and Gari D. Clifford. "Logistic regression-HSMM-based heart sound segmentation."
+           IEEE transactions on biomedical engineering 63.4 (2015): 822-832.
+    .. [2] https://physionet.org/content/hss/1.0/
 
     """
     assert feature_format.lower() in [

@@ -17,26 +17,32 @@ __all__ = [
 def get_dwt_features(
     signal: np.ndarray, fs: int, config: Optional[dict] = None
 ) -> np.ndarray:
-    """
-    compute the discrete wavelet transform (DWT) features using Springer's algorithm
+    """Compute the discrete wavelet transform (DWT)
+    features using Springer's algorithm [1]_.
 
     Parameters
     ----------
-    signal : np.ndarray,
-        the (PCG) signal, of shape (nsamples,)
-    fs : int,
-        the sampling frequency
-    config : dict, optional,
-        the configuration, with the following keys:
-        - ``'wavelet_level'``: int,
+    signal : numpy.ndarray
+        The (PCG) signal, of shape ``(nsamples,)``.
+    fs : int
+        Sampling frequency of the signal.
+    config : dict, optional
+        The configuration for computing the features, with the following items:
+
+        - ``'wavelet_level'`` : int,
             the level of the wavelet decomposition, default: 3
-        - ``'wavelet_name'``: str,
+        - ``'wavelet_name'`` : str,
             the name of the wavelet, default: "db7"
 
     Returns
     -------
-    dwt_features : np.ndarray,
-        the DWT features, of shape (nsamples,)
+    dwt_features : numpy.ndarray
+        The DWT features, of shape ``(nsamples,)``.
+
+    References
+    ----------
+    .. [1] Springer, David B., Lionel Tarassenko, and Gari D. Clifford. "Logistic regression-HSMM-based heart sound segmentation."
+           IEEE transactions on biomedical engineering 63.4 (2015): 822-832.
 
     """
     cfg = ED(

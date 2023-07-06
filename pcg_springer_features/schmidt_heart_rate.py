@@ -19,33 +19,41 @@ __all__ = [
 def get_schmidt_heart_rate(
     signal: np.ndarray, fs: int, config: Optional[dict] = None
 ) -> Tuple[float, float]:
-    """
-    compute heart rate from (PCG) signal using Schmidt algorithm (using autocorrelation)
+    """Compute heart rate from (PCG) signal using
+    Schmidt algorithm (an autocorrelation-based method) [1]_ [2]_.
 
     Parameters
     ----------
-    signal : np.ndarray,
-        the (PCG) signal
-    fs : int,
-        the sampling frequency
-    config : dict, optional,
+    signal : numpy.ndarray
+        The (PCG) signal.
+    fs : int
+        Sampling frequency of the signal.
+    config : dict, optional
         the configuration, with the following keys:
-        - ``'order'``: int,
+
+        - ``'order'`` : int,
             the order of the filter, default: 2
-        - ``'lowcut'``: real number,
+        - ``'lowcut'`` : real number,
             the low cutoff frequency, default: 25
-        - ``'highcut'``: real number,
+        - ``'highcut'`` : real number,
             the high cutoff frequency, default: 400
-        - ``'lpf_freq'``: real number,
+        - ``'lpf_freq'`` : real number,
             the frequency of the low pass filter for computing the envelope,
             default 8
 
     Returns
     -------
-    mean_hr : float,
-        the mean heart rate
-    systolic_time_interval: float,
-        the systolic time interval
+    mean_hr : float
+        Mean heart rate.
+    systolic_time_interval : float
+        Systolic time interval.
+
+    References
+    ----------
+    .. [1] Schmidt, Samuel E., et al. "Segmentation of heart sound recordings by a duration-dependent hidden Markov model."
+           Physiological measurement 31.4 (2010): 513.
+    .. [2] Springer, David B., Lionel Tarassenko, and Gari D. Clifford. "Logistic regression-HSMM-based heart sound segmentation."
+           IEEE transactions on biomedical engineering 63.4 (2015): 822-832.
 
     """
     cfg = ED(
