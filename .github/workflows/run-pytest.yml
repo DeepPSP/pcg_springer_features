@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
 
     steps:
     - uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
         python -m pip install --upgrade pip setuptools wheel
         python -m pip install -r requirements.txt
         python -m pip install pytest pytest-xdist pytest-cov # Testing packages
-        python -m pip uninstall pcg_springer_features --yes # Remove if already installed 
+        python -m pip uninstall pcg_springer_features --yes # Remove if already installed
         python setup.py install_egg_info # Workaround https://github.com/pypa/pip/issues/4537
         python -m pip install -e .[dev]
         python -m pip freeze
@@ -36,4 +36,5 @@ jobs:
       run: |
         pytest -v --cov=pcg_springer_features test
     - name: Upload coverage to Codecov
+      if: matrix.python-version == '3.10'
       uses: codecov/codecov-action@v3
