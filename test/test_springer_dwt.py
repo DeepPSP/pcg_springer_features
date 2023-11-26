@@ -9,21 +9,13 @@ import scipy.io.wavfile as siw
 from easydict import EasyDict as ED
 
 try:
-    from pcg_springer_features.springer_dwt import (
-        get_dwt_features,
-        get_full_dwt_features,
-        _wkeep1,
-    )
+    from pcg_springer_features.springer_dwt import _wkeep1, get_dwt_features, get_full_dwt_features
 except ModuleNotFoundError:
     import sys
 
     sys.path.insert(0, str(Path(__file__).parents[1].resolve()))
 
-    from pcg_springer_features.springer_dwt import (
-        get_dwt_features,
-        get_full_dwt_features,
-        _wkeep1,
-    )
+    from pcg_springer_features.springer_dwt import _wkeep1, get_dwt_features, get_full_dwt_features
 
 
 def _to_dtype(data: np.ndarray, dtype: np.dtype = np.float32) -> np.ndarray:
