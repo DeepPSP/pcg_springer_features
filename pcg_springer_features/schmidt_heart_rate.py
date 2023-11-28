@@ -29,14 +29,14 @@ def get_schmidt_heart_rate(signal: np.ndarray, fs: int, config: Optional[dict] =
         the configuration, with the following keys:
 
         - ``'order'`` : int,
-            the order of the filter, default: 2
+          the order of the filter, default: 2
         - ``'lowcut'`` : real number,
-            the low cutoff frequency, default: 25
+          the low cutoff frequency, default: 25
         - ``'highcut'`` : real number,
-            the high cutoff frequency, default: 400
+          the high cutoff frequency, default: 400
         - ``'lpf_freq'`` : real number,
-            the frequency of the low pass filter for computing the envelope,
-            default 8
+          the frequency of the low pass filter for computing the envelope,
+          default 8
 
     Returns
     -------

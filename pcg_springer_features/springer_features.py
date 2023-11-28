@@ -125,19 +125,18 @@ def get_springer_features(
 
 
 def hilbert_envelope(signal: np.ndarray, fs: int) -> np.ndarray:
-    """
-    Compute the envelope of the signal using the Hilbert transform.
+    """Compute the envelope of the signal using the Hilbert transform.
 
     Parameters
     ----------
-    signal: np.ndarray,
+    signal : numpy.ndarray
         The signal (1D) to extract features from.
-    fs: int,
+    fs : int
         The sampling frequency of the signal.
 
     Returns
     -------
-    ndarray:
+    numpy.ndarray:
         The envelope of the signal.
 
     """
@@ -145,24 +144,23 @@ def hilbert_envelope(signal: np.ndarray, fs: int) -> np.ndarray:
 
 
 def homomorphic_envelope_with_hilbert(signal: np.ndarray, fs: int, lpf_freq: int = 8, order: int = 1) -> np.ndarray:
-    """
-    Compute the homomorphic envelope of the signal using the Hilbert transform.
+    """Compute the homomorphic envelope of the signal using the Hilbert transform.
 
     Parameters
     ----------
-    signal: np.ndarray,
+    signal : numpy.ndarray
         The signal (1D) to extract features from.
-    fs: int,
+    fs : int
         The sampling frequency of the signal.
-    lpf_freq: int, default 8,
+    lpf_freq : int, default 8
         The low-pass filter frequency (high cut frequency).
         The filter will be applied to log of the Hilbert envelope.
-    order: int, default 1,
+    order : int, default 1
         The order of the butterworth low-pass filter.
 
     Returns
     -------
-    homomorphic_envelope: ndarray,
+    homomorphic_envelope : numpy.ndarray
         The homomorphic envelope of the signal.
 
     """
@@ -179,34 +177,34 @@ def get_PSD_feature(
     window_size: float = 1 / 40,
     overlap_size: float = 1 / 80,
 ) -> np.ndarray:
-    """
-    Compute the PSD (power spectral density) of the signal.
+    """Compute the PSD (power spectral density) of the signal.
 
     Parameters
     ----------
-    signal: np.ndarray,
+    signal : numpy.ndarray
         The signal (1D) to extract features from.
-    fs: int,
+    fs : int
         The sampling frequency of the signal.
-    freq_lim: sequence of int, default (40,60),
+    freq_lim : sequence of int, default (40,60),
         The frequency range to compute the PSD.
-    window_size: float, default 1/40,
+    window_size : float, default 1/40
         The size of the window to compute the PSD,
         with units in seconds.
-    overlap_size: float, default 1/80,
+    overlap_size : float, default 1/80
         The size of the overlap between windows to compute the PSD,
         with units in seconds.
 
     Returns
     -------
-    psd: ndarray,
+    psd : numpy.ndarray
         The PSD of the signal.
 
-    NOTE:
-    The `round` function in matlab is different from python's `round` function,
-    ref. https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules.
-    The rounding rule for matlab is `to nearest, ties away from zero`,
-    while the rounding rule for python is `to nearest, ties to even`.
+    .. note::
+
+        The `round` function in matlab is different from python's `round` function,
+        ref. https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules.
+        The rounding rule for matlab is `to nearest, ties away from zero`,
+        while the rounding rule for python is `to nearest, ties to even`.
 
     """
     with localcontext() as ctx:

@@ -15,7 +15,9 @@ __all__ = [
 
 def get_dwt_features(signal: np.ndarray, fs: int, config: Optional[dict] = None) -> np.ndarray:
     """Compute the discrete wavelet transform (DWT)
-    features using Springer's algorithm [1]_.
+    features using Springer's algorithm.
+
+    For Springer's algorithm, see [1]_.
 
     Parameters
     ----------
@@ -27,9 +29,9 @@ def get_dwt_features(signal: np.ndarray, fs: int, config: Optional[dict] = None)
         The configuration for computing the features, with the following items:
 
         - ``'wavelet_level'`` : int,
-            the level of the wavelet decomposition, default: 3
+          the level of the wavelet decomposition, default: 3
         - ``'wavelet_name'`` : str,
-            the name of the wavelet, default: "db7"
+          the name of the wavelet, default: "db7"
 
     Returns
     -------
@@ -55,26 +57,26 @@ def get_dwt_features(signal: np.ndarray, fs: int, config: Optional[dict] = None)
 
 
 def get_full_dwt_features(signal: np.ndarray, fs: int, config: Optional[dict] = None) -> np.ndarray:
-    """
-    compute the full DWT features using Springer's algorithm
+    """Compute the full DWT features using Springer's algorithm.
 
     Parameters
     ----------
-    signal : np.ndarray,
-        the (PCG) signal, of shape (nsamples,)
-    fs : int,
-        the sampling frequency
-    config : dict, optional,
-        the configuration, with the following keys:
+    signal : numpy.ndarray
+        The (PCG) signal, of shape ``(nsamples,)``.
+    fs : int
+        The sampling frequency.
+    config : dict, optional
+        The configuration, with the following keys:
+
         - ``'wavelet_level'``: int,
-            the level of the wavelet decomposition, default: 3
+          the level of the wavelet decomposition, default: 3
         - ``'wavelet_name'``: str,
-            the name of the wavelet, default: "db7"
+          the name of the wavelet, default: "db7"
 
     Returns
     -------
-    dwt_features : np.ndarray,
-        the full DWT features, of shape (``'wavelet_level'``, nsamples)
+    dwt_features : numpy.ndarray
+        The full DWT features, of shape ``(wavelet_level, nsamples)``.
 
     """
     cfg = ED(
@@ -97,12 +99,12 @@ def _wkeep1(x: np.ndarray, k: int, opt: Union[str, int] = "c") -> np.ndarray:
 
     Parameters
     ----------
-    x : np.ndarray,
-        the input array
-    k : int,
-        the length of the output array
-    opt : str or int, optional,
-        specifies the position of the output array in the input array,
+    x : numpy.ndarray
+        The input array.
+    k : int
+        The length of the output array。
+    opt : str or int, optional
+        Specifies the position of the output array in the input array,
         if ``opt`` is an integer, then it is the first index of the output array,
         if ``opt`` is a string, then it can be one of the following:
         - ``"c"`` or ``"center"`` or ``"centre"``: the output array is centered in the input array
@@ -111,13 +113,13 @@ def _wkeep1(x: np.ndarray, k: int, opt: Union[str, int] = "c") -> np.ndarray:
 
     Returns
     -------
-    y : np.ndarray,
-        the output array, of shape (k,),
-        if ``k > len(x)``, then ``x`` is returned directly
+    y : numpy.ndarray
+        The output array, of shape ``(k,)``,
+        if ``k > len(x)``, then ``x`` is returned directly.
 
     References
     ----------
-    wkeep1.m of the matlab wavelet toolbox
+    `wkeep1.m` of the matlab wavelet toolbox.
 
     """
     x_len = len(x)
