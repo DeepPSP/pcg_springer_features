@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pcg-springer-features"
+dynamic = ["version"]
+description = "Tools for Computation of Springer's Features from Phonocardiogram (PCG)."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+authors = [
+    { name = "DeepPSP", email = "wenh06@gmail.com" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "easydict",
+    "numpy",
+    "PyWavelets",
+    "scipy",
+    "torch-ecg",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+]
+test = [
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+]
+
+[project.urls]
+Homepage = "https://github.com/DeepPSP/pcg_springer_features"
+
+[tool.hatch.version]
+path = "pcg_springer_features/version.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/pcg_springer_features",
+]

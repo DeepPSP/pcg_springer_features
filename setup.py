@@ -52,6 +52,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.7",
-    install_requires=open("requirements.txt").readlines(),
+    install_requires=(cwd / "requirements.txt").read_text(encoding="utf-8").splitlines(),
     extras_require=extras,
 )
