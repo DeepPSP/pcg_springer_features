@@ -3,3 +3,4 @@ scipy
 PyWavelets
 easydict
 torch-ecg
+PeakUtils
