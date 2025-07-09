@@ -8,7 +8,7 @@ dynamic = ["version"]
 description = "Tools for Computation of Springer's Features from Phonocardiogram (PCG)."
 readme = "README.md"
 license = { file = "LICENSE" }
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 authors = [
     { name = "DeepPSP", email = "wenh06@gmail.com" },
 ]
