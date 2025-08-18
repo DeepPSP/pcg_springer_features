@@ -1,5 +1,4 @@
-"""
-"""
+""" """
 
 from .schmidt_heart_rate import get_schmidt_heart_rate
 from .springer_features import get_springer_features
