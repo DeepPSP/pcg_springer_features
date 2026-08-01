@@ -109,7 +109,7 @@ def get_springer_features(
     func = dict(
         flat=np.concatenate,
         channel_first=np.vstack,
-        channel_last=np.hstack,
+        channel_last=lambda xs: np.vstack(xs).T,
     )
 
     springer_features = func[feature_format.lower()](
