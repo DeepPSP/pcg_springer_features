@@ -27,9 +27,12 @@ jobs:
       run: |
         python -m pip list
     - name: Install dependencies
+      # the pre-commit hooks (black / flake8 / isort / whitespace) are pure
+      # static checks and do not need the package installed; the editable
+      # install is what breaks this job in CI (pip falls back to a legacy
+      # `python setup.py develop` which this pyproject-only repo cannot do)
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        python -m pip install -e .[dev]
     - name: List installed Python packages
       run: |
         python -m pip list
